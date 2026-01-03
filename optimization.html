@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Tasks & Rewards</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+  h1 { text-align: center; margin-bottom: 30px; }
+  .balance { font-size: 24px; margin-bottom: 20px; text-align:center; }
+  .task { background: #fff; padding: 15px; margin-bottom: 10px; border-radius: 5px; display:flex; justify-content:space-between; align-items:center; border:1px solid #ccc; }
+  .task button { padding: 8px 15px; background: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+  .task button:disabled { background: #aaa; cursor: not-allowed; }
+  video { display: none; max-width: 100%; margin: 15px 0; }
+</style>
+</head>
+<body>
+
+<h1>Tasks & Rewards</h1>
+<div class="balance">Account Balance: <span id="balance">0</span> KES</div>
+
+<!-- Video Player -->
+<video id="taskVideo" controls></video>
+
+<div id="tasksContainer"></div>
+
+<script>
+// Initial user balance
+let balance = 0;
+const balanceEl = document.getElementById("balance");
+
+// Task list
+const tasks = [
+  {id:1, name:"Watch Video 1", type:"video", reward:11, completed:false, video:"videos/opt 1.mp4"},
+  {id:2, name:"Watch Video 2", type:"video", reward:11, completed:false, video:"videos/opt 2.mp4"},
+  {id:3, name:"Daily Login", type:"login", reward:5, completed:false},
+  {id:4, name:"Mini Quiz", type:"quiz", reward:15, completed:false},
+  {id:5, name:"Simulated Trade", type:"trade", reward:20, completed:false}
+];
+
+const container = document.getElementById("tasksContainer");
+const videoEl = document.getElementById("taskVideo");
+
+// Function to render tasks
+function renderTasks(){
+  container.innerHTML = "";
+  tasks.forEach((t,i)=>{
+    const div = document.createElement("div");
+    div.classList.add("task");
+    div.innerHTML = `
+      <span>${t.name} (${t.reward} KES)</span>
+      <button ${t.completed ? "disabled" : ""} data-index="${i}">${t.completed ? "Completed" : "Do Task"}</button>
+    `;
+    container.appendChild(div);
+  });
+
+  // Add click listeners
+  document.querySelectorAll(".task button").forEach(btn=>{
+    btn.addEventListener("click", ()=>doTask(btn.getAttribute("data-index")));
+  });
+}
+
+// Function to handle task completion
+function doTask(index){
+  const task = tasks[index];
+
+  if(task.type === "video"){
+    // Play the video first
+    videoEl.src = task.video;
+    videoEl.style.display = "block";
+    videoEl.load();
+    videoEl.play();
+
+    videoEl.onended = function(){
+      balance += task.reward;
+      balanceEl.textContent = balance;
+      task.completed = true;
+      videoEl.style.display = "none";
+      alert(`You earned ${task.reward} KES for ${task.name}!`);
+      renderTasks();
+    }
+  } else {
+    // Other tasks: complete immediately
+    balance += task.reward;
+    balanceEl.textContent = balance;
+    task.completed = true;
+    alert(`You earned ${task.reward} KES for ${task.name}!`);
+    renderTasks();
+  }
+}
+
+// Initial render
+renderTasks();
+</script>
+
+</body>
+</html>

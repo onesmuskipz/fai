@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trading Quiz (One Attempt)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.balance {
+  background: #eafaf1;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.task {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h2>Account Dashboard</h2>
+
+  <div class="balance">
+    Account Balance: <span id="balance">0</span> KES
+  </div>
+
+  <h3>Trading Quiz</h3>
+
+  <div class="task">
+    <p>What is Forex?</p>
+
+    <label>
+      <input type="radio" name="quiz" value="wrong">
+      A type of cryptocurrency
+    </label><br>
+
+    <label>
+      <input type="radio" name="quiz" value="correct">
+      A market for trading currencies
+    </label><br>
+
+    <label>
+      <input type="radio" name="quiz" value="wrong">
+      A stock exchange
+    </label><br>
+
+    <button id="submitBtn" onclick="submitQuiz()">Submit</button>
+    <p id="quizResult"></p>
+  </div>
+
+</div>
+
+<script>
+let balance = 0;
+let attempted = false;
+
+function submitQuiz() {
+  if (attempted) return;
+
+  const selected = document.querySelector('input[name="quiz"]:checked');
+  if (!selected) {
+    alert("Select an answer");
+    return;
+  }
+
+  attempted = true;
+
+  // lock answers
+  document.querySelectorAll('input[name="quiz"]').forEach(r => r.disabled = true);
+  document.getElementById("submitBtn").disabled = true;
+
+  if (selected.value === "correct") {
+    balance += 10;
+    document.getElementById("balance").innerText = balance;
+    document.getElementById("quizResult").innerText = "Correct! +10 KES";
+  } else {
+    document.getElementById("quizResult").innerText = "Wrong answer. No reward.";
+  }
+}
+</script>
+
+</body>
+</html>
+

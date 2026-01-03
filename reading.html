@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reading Trading Tips</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+}
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+.balance {
+  background: #eafaf1;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.task {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.task button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.tip {
+  background: #e0f7fa;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Account Dashboard</h2>
+  <div class="balance">
+    Account Balance: <span id="balance">0</span> KES
+  </div>
+
+  <h3>Reading Trading Tips</h3>
+
+  <div class="task">
+    <span>Read Daily Tip 1</span>
+    <button onclick="showTip(this, 'Always manage your risk with stop losses.', 5)">Read + Earn 5 KES</button>
+    <div class="tip"></div>
+  </div>
+
+  <div class="task">
+    <span>Read Daily Tip 2</span>
+    <button onclick="showTip(this, 'Never invest more than you can afford to lose.', 5)">Read + Earn 5 KES</button>
+    <div class="tip"></div>
+  </div>
+
+  <div class="task">
+    <span>Read Market Update</span>
+    <button onclick="showTip(this, 'Bitcoin volatility is high today.', 8)">Read + Earn 8 KES</button>
+    <div class="tip"></div>
+  </div>
+
+</div>
+
+<script>
+let balance = 0;
+
+function showTip(btn, text, reward) {
+  // Prevent multiple clicks
+  if(btn.disabled) return;
+
+  const tipDiv = btn.nextElementSibling;
+  tipDiv.innerText = text;
+  tipDiv.style.display = "block";
+
+  btn.disabled = true;
+  btn.innerText = "Reading...";
+
+  // Simulate reading time (3 seconds)
+  setTimeout(() => {
+    balance += reward;
+    document.getElementById("balance").innerText = balance;
+    btn.innerText = "Completed";
+  }, 3000);
+}
+</script>
+
+</body>
+</html>

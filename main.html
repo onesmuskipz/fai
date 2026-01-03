@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Agency | Business Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    header h1 span { color: #00b894; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    nav a:hover { color: #00b894; }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .hero {
+      background: #00b894;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    /* FLEX LAYOUT FOR DEPOSIT & BALANCE */
+   .dashboard-flex {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 20px;
+   }
+
+   .deposit-section {
+   flex: 1;
+   }
+
+   .deposit-section input {
+   width: 70%;
+   padding: 10px;
+   border-radius: 6px;
+   border: 1px solid #ccc;
+   display: inline-block;
+   }
+
+   .deposit-section button {
+   width: 28%;
+   padding: 10px;
+   margin-left: 2%;
+   order: none;
+   border-radius: 6px;
+   background: #00b894;
+   color: white;
+   font-weight: bold;
+   cursor: pointer;
+   display: inline-block;
+   }
+
+   .balance-section {
+   flex: 1;
+   text-align: right;
+   font-size: 1.2em;
+   }
+   
+.balance {
+  background: #eafaf1;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.task {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  display: none; /* Hide tasks completely */
+}
+.task button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+/* FLEX LAYOUT FOR DEPOSIT & BALANCE */
+.dashboard-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.deposit-section {
+  flex: 1;
+}
+
+.deposit-section input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+
+.deposit-section button {
+  width: 28%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #00b894;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+.balance-section {
+  flex: 1;
+  text-align: right;
+  font-size: 1.2em;
+}
+
+/* RESPONSIVE */
+@media(max-width: 600px){
+  .dashboard-flex {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .deposit-section, .balance-section {
+    flex: unset;
+    text-align: left;
+  }
+  .deposit-section input, .deposit-section button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+   .service.seo {
+     background: #e0f7fa; }       /* Light cyan */
+   .service.ads {
+     background: #fff3e0; }       /* Light orange */
+   .service.content {
+     background: #f3e5f5; }   /* Light purple */
+
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .service {
+      flex: 1 1 250px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #ddd;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      background: #00b894;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover { background: #019170; }
+
+    .error { color: red; font-size: 0.9em; }
+    .success { color: green; font-weight: bold; }
+
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    footer a { color: #00b894; text-decoration: none; }
+  </style>
+</head>
+<body>
+ <header>
+  <h1>DIGITAL <span>AGENCY</span></h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="#login">Login</a>
+    <a href="#signup">Create Account</a>
+  </nav>
+ </header>
+
+ <section id="home" class="hero">
+  <h2>Grow Your Brand Online</h2>
+  <p>We help businesses succeed with SEO, ads, and content marketing.</p>
+ </section>
+
+ <section id="about">
+  <h2>About Us</h2>
+  <p>Digital Marketing is a team of experts dedicated to boosting your online presence.</p>
+ </section>
+  <div class="container">
+  <h2>Welcome, <span id="user"></span></h2>
+
+  <!-- HORIZONTAL DEPOSIT & BALANCE -->
+  <div class="dashboard-flex">
+    <div class="deposit-section">
+      <input type="number" id="depositInput" placeholder="Deposit amount">
+      <button onclick="deposit()">Deposit</button>
+    </div>
+
+    <div class="balance-section">
+      Account Balance: <strong><span id="balance">0</span> KES</strong>
+    </div>
+  </div>
+
+ <section id="services">
+ <div class="service seo">
+  <h3>SEO Optimization</h3>
+  <p>Enhance your online presence through search engines. Optimize your website and media content so your videos, images, and blog posts rank higher and reach the right audience.</p>
+    <a href="optimization.html" class="service">
+  <h3>SEO Optimization</h3>
+  <p>Boost your website’s visibility on Google...</p>
+  <button>View details</button>
+ </a>
+ </div>
+
+ <div class="service ads">
+  <h3>Social Media Ads</h3>
+  <p>Create and manage ads across Facebook, Instagram, YouTube, and LinkedIn. Promote your videos, graphics, and campaigns to engage the right audience and drive traffic.</p>
+ <a href="ads.html" class="service">
+  <h3>Social Media Ads</h3>
+  <p>Promote your campaigns on social media platforms...</p>
+  <button>View details</button>
+ </a>
+ </div>
+
+ <div class="service content">
+  <h3>Content Strategy</h3>
+  <p>Plan and produce compelling media content — videos, images, and blog posts — that tells your brand story, attracts followers, and converts them into customers.</p>
+   <a href="content.html" class="service">
+  <h3>Content Strategy</h3>
+  <p>Plan and create engaging content that converts...</p>
+  <button>View details</button>
+ </a>
+ </div>
+
+ </section>
+
+ <section id="contact">
+  <h2>Contact Us</h2>
+  <form id="contactForm">
+    <label>Name</label>
+    <input type="text" id="name" required>
+    <small class="error" id="nameError"></small>
+
+    <label>Email</label>
+    <input type="email" id="email" required>
+    <small class="error" id="emailError"></small>
+
+    <label>Message</label>
+    <textarea id="message" required></textarea>
+    <small class="error" id="messageError"></small>
+
+    <button type="submit">Send Message</button>
+    <p id="formNote"></p>
+  </form>
+ </section>
+
+ <footer>
+  <p>© <span id="year"></span> Digital Marketing</p>
+ </footer>
+
+ <script>
+  // Load account from localStorage
+const account = JSON.parse(localStorage.getItem("account"));
+
+// Redirect if not logged in
+if(!account){
+  window.location.href = "signup.html";
+}
+
+// Display username & balance
+document.getElementById("user").textContent = account.username;
+ document.getElementById("balance").textContent = account.balance;
+
+ // Deposit function
+ function deposit(){
+  const input = document.getElementById("depositInput");
+  const amount = Number(input.value);
+
+  if(amount <= 0){
+    alert("Enter a valid amount");
+    return;
+  }
+
+  account.balance += amount;
+  localStorage.setItem("account", JSON.stringify(account));
+  document.getElementById("balance").textContent = account.balance;
+  input.value = ""};
+
+ if (fee < 3500) {
+  error.style.display = "block";
+  error.textContent = "Minimum activation fee is KES 3500.";
+ } else {
+  error.style.display = "none";
+ }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+ </script>
+
+</body>
+</html>

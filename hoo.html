@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DIGITAL MARKETING</title>
+<p>Digital Marketing is a team of experts dedicated to boosting your online presence.</p>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+}
+form {
+  max-width: 400px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+button {
+  background: #00b894;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.error {
+  color: red;
+  font-size: 0.9em;
+}
+</style>
+</head>
+<body>
+
+<form onsubmit="createAccount(event)">
+  <h2>Create Account</h2>
+
+  <input type="text" id="username" placeholder="Username" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Password" required>
+  <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+  <p class="error" id="errorMsg"></p>
+
+  <button type="submit">Create Account</button>
+</form>
+
+<script>
+function createAccount(e){
+  e.preventDefault();
+
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirm = document.getElementById("confirmPassword").value;
+
+  if(password !== confirm){
+    document.getElementById("errorMsg").textContent = "Passwords do not match";
+    return;
+  }
+
+  const account = {
+    username: username,
+    email: email,
+    balance: 0
+  };
+
+  localStorage.setItem("account", JSON.stringify(account));
+
+  // ✅ REDIRECT TO NEXT PAGE
+  window.location.href = "main.html";
+}
+</script>
+
+</body>
+</html>

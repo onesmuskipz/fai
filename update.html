@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trading Dashboard - Tips & Updates</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+}
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+.balance {
+  background: #eafaf1;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+.task {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.task button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.tip {
+  background: #e0f7fa;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Account Dashboard</h2>
+  <div class="balance">
+    Account Balance: <span id="balance">0</span> KES
+  </div>
+
+  <h3>Market Updates</h3>
+
+  <div class="task">
+    <span>View BTC Market Update</span>
+    <button onclick="showTip(this, 'Bitcoin volatility is high today. Prices may swing ±5%.', 8)">View + Earn 8 KES</button>
+    <div class="tip"></div>
+  </div>
+
+  <div class="task">
+    <span>View Forex Market Update</span>
+    <button onclick="showTip(this, 'USD/EUR pair is stable today; watch for ECB announcements.', 8)">View + Earn 8 KES</button>
+    <div class="tip"></div>
+  </div>
+
+</div>
+
+<script>
+let balance = 0;
+
+function showTip(btn, text, reward) {
+  if(btn.disabled) return;
+
+  const tipDiv = btn.nextElementSibling;
+  tipDiv.innerText = text;
+  tipDiv.style.display = "block";
+
+  btn.disabled = true;
+  btn.innerText = "Reading...";
+
+  // Simulate reading time (3 seconds)
+  setTimeout(() => {
+    balance += reward;
+    document.getElementById("balance").innerText = balance;
+    btn.innerText = "Completed";
+  }, 3000);
+}
+</script>
+
+</body>
+</html>

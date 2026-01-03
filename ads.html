@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Earn KES by Watching Videos</title>
+ <style>
+  body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background: #f9f9f9; }
+  .account { font-size: 24px; margin-bottom: 20px; }
+  .btn { padding: 12px 25px; font-size: 16px; background: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+  .btn:hover { background: #0056b3; }
+  video { display: none; margin: 20px auto; max-width: 90%; border: 1px solid #ccc; }
+ </style>
+</head>
+<body>
+
+ <h1>Earn KES by Watching Videos</h1>
+
+ <div class="account">
+  Account Balance: <span id="balance">0</span> KES
+ </div>
+
+ <button class="btn" id="subscribeBtn">Subscribe & Watch Video</button>
+
+ <video id="promoVideo" controls>
+  Your browser does not support the video tag.
+ </video>
+
+ <script>
+ let balance = 0;
+ let currentIndex = 0;
+
+ // Replace with your actual video files
+ const videos = ["videos/payotvideo.mp4", "videos/pricklle.mp4", "videos/shortv.mp4"];
+
+ const balanceEl = document.getElementById("balance");
+ const subscribeBtn = document.getElementById("subscribeBtn");
+ const video = document.getElementById("promoVideo");
+
+ // Function to play the current video
+ function playVideo(index) {
+    if(index < videos.length){
+        video.src = videos[index];  // Set video source
+        video.style.display = "block"; // Show video
+        video.load();               // Reload video
+        video.play();               // Play video
+    } else {
+        alert("All videos watched! Total balance: " + balance + " KES");
+        subscribeBtn.disabled = true;
+    }
+ }
+
+ // When user clicks Subscribe
+ subscribeBtn.addEventListener("click", () => {
+    playVideo(currentIndex);
+ });
+
+ // When video ends
+ video.addEventListener("ended", () => {
+    // Add 11 KES
+    balance += 11;
+    balanceEl.textContent = balance;
+
+    // Move to next video
+    currentIndex++;
+
+    // If more videos, automatically play next
+    if(currentIndex < videos.length){
+        playVideo(currentIndex);
+    } else {
+        alert("All videos watched! Total balance: " + balance + " KES");
+        subscribeBtn.disabled = true;
+        video.style.display = "none";
+    }
+ });
+ </script>
+
+</body>
+</html>
+
+
